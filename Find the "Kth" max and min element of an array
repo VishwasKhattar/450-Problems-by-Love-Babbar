@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+using namespace std;
+
+void kmin();
+void kmax();
+void kmin(int arr[], int k)
+{
+    int mini = arr[k - 1];
+    cout << k << "minimum element is = " << mini << endl;
+}
+
+void kmax(int arr[], int k)
+{
+    int maxi = arr[k - 1];
+    cout << k << "maximum element is = " << maxi << endl;
+}
+
+int main()
+{
+    int arr[] = {12, 56, 33, 56, 213, 223, 453};
+    int n = sizeof(arr) / sizeof(int);
+    int k;
+    cout << "Enter any number =" << endl;
+    cin >> k;
+    sort(arr, arr + n);    // Arrange the array in ascending order
+    kmin(arr, k);          // Since the array is in ascending order it will get the kth minimum element
+    reverse(arr, arr + n); // Reversing the sorted array to arrange it in descending order
+    kmax(arr, k);          // Since the array is now in descending order it will get the kth maximum element
+    return 0;
+}
