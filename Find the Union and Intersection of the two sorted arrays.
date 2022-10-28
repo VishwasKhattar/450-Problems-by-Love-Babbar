@@ -1,0 +1,54 @@
+// Find the Union and Intersection of the two sorted arrays.
+
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+#include <vector>
+#include <set>
+using namespace std;
+
+void unioni(int a[], int b[], int n, int m) //For finding the union of two arrays
+{
+    set<int> new1;
+    for (int i = 0; i < n; i++)
+    {
+        new1.insert(a[i]);
+    }
+    for (int i = 0; i < m; i++)
+    {
+        new1.insert(b[i]);
+    }
+    cout << "Union is = ";
+    for (auto it = new1.begin(); it != new1.end(); ++it)  //Printing the union set
+        cout << ' ' << *it;
+
+    cout << "\n union size is = " << new1.size() << endl;
+}
+void intersec(int a[], int b[], int n, int m) //Function to find the intersection of two arrays
+{
+    set<int> inter;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (a[i] == b[j])
+            {
+                inter.insert(a[i]);
+            }
+        }
+    }
+    cout << "Intersection elements are = ";
+    for (auto it = inter.begin(); it != inter.end(); ++it)
+        cout << ' ' << *it;
+}
+
+int main()
+{
+    int a[] = {1, 2, 3, 5, 4};
+    int b[] = {5, 6, 7, 4, 3};
+    int n = sizeof(a) / sizeof(int);
+    int m = sizeof(b) / sizeof(int);
+    unioni(a, b, n, m); //Calling of union function
+    intersec(a, b, n, m); //Calling of intersection function
+    return 0;
+}
