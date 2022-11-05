@@ -1,0 +1,71 @@
+// Merge Intervals
+// Without using Vectors
+// Use of Structure and stack
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Declaring the structure of Intervals having s as start time and e as end time
+
+struct intervals
+{
+    int s, e;
+};
+
+// Function used to compare 2 intervals
+
+bool compare(intervals i1, intervals i2)
+{
+    return (i1.s < i2.s);
+}
+
+// Main function used to merge Intervals
+
+void mergeintervals(intervals arr[], int n)
+{
+    if (n <= 0)
+    {
+        cout << "No intervals present";
+    }
+
+    stack<intervals> s;
+
+    sort(arr, arr + n, compare);
+
+    s.push(arr[0]);
+
+    // Checking and Merging the intervals based on their start time
+
+    for (int i = 1; i < n; i++)
+    {
+        intervals top = s.top();
+        if (top.e >= arr[i].s)
+        {
+            top.e = arr[i].e;
+            s.pop();
+            s.push(top);
+        }
+        else
+        {
+            s.push(arr[i]);
+        }
+    }
+
+    // Printing the answer Stack
+
+    while (!s.empty())
+    {
+        intervals A = s.top();
+        cout << " [ " << A.s << " , " << A.e << " ] "
+             << " ";
+        s.pop();
+    }
+}
+
+int main()
+{
+    intervals arr[] = {{1, 3}, {2, 5}, {6, 7}, {7, 9}};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    mergeintervals(arr, n);
+    return 0;
+}
