@@ -1,0 +1,46 @@
+// Next Permutation
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void perm(vector<int>& arr)
+{
+    int n = arr.size();
+    int id = -1;
+    for (int i = n - 1; i > 0; i--)
+    {
+        if (arr[i] > arr[i - 1])
+        {
+            id = i;
+            break;
+        }
+    }
+    if (id == -1)
+    {
+        reverse(arr.begin(), arr.end());
+    }
+    else
+    {
+        int prev = id;
+        for (int i = id + 1; i < n; i++)
+        {
+            if (arr[i] > arr[id - 1] && arr[i] < arr[prev])
+            {
+                prev = i;
+            }
+        }
+        swap(arr[id-1], arr[prev]);
+        reverse((arr.begin()+id), arr.end()); 
+    }
+     for (int i = 0; i < n; i++)
+        {
+            cout << arr[i] << ",";
+        }
+}
+
+int main()
+{
+    vector<int> arr={2,3,3,1,3,3};
+    perm(arr);
+    return 0;
+}
