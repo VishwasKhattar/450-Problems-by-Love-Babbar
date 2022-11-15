@@ -1,20 +1,24 @@
 // Find maximum product subarray
 
+// Find maximum product subarray
+
 #include <bits/stdc++.h>
 using namespace std;
 
 void MaxProd(int arr[], int n)
 {
-    int maxprod = 1;
-    for (int i = 0; i < n; i++)
+    int maxprod = arr[0], max1 = maxprod, min1 = maxprod;
+    for (int i = 1; i < n; i++)
     {
-        int prod = 1;
-        for (int j = i; j < n; j++)
+        if (arr[i] < 0)
         {
-            prod = prod * arr[j];
-            maxprod = max(maxprod, prod);
+            swap(max1, min1); // To make maximum greater than minimum as if max multiplied by -ve number will become less than minimum multiplied by -ve element
         }
+        max1 = max(arr[i], max1 * arr[i]);
+        min1 = min(arr[i], min1 * arr[i]);
+        maxprod = max(max1, maxprod);
     }
+
     cout << "Maximum Subarray Product = " << maxprod;
 }
 
