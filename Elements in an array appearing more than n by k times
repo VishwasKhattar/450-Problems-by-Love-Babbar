@@ -1,0 +1,33 @@
+// Given an array of size n and a number k, find all elements that appear more than " n/k " times.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void freq(int arr[], int n, int k)
+{
+    unordered_map<int, int> fr;
+
+    int x = n / k;
+
+    for (int i = 0; i < n; i++)
+    {
+        fr[arr[i]]++;
+    }
+
+    for (auto i : fr)
+    {
+        if (i.second > x)
+        {
+            cout << i.first << " ";
+        }
+    }
+}
+
+int main()
+{
+    int arr[] = {1, 2, 3, 1, 2, 1, 3, 4, 5, 1, 1};
+    int n = sizeof(arr) / sizeof(int);
+    int k = 3;
+    freq(arr, n, k);
+    return 0;
+}
