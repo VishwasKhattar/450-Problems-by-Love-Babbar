@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string countAndSay(int n) {
+       
+        if(n==1)
+        return "1";
+        if(n==0)
+        return "";
+        string str="1";
+        for(int i=1;i<n;i++)
+        {
+        string t="";
+        // str=str+'&';
+        int c=1;
+        int len=str.length();
+        for(int j=0;j<len;j++)
+        {
+           while(j+1<len && str[j]==str[j+1])  // iterates till we find any new character and stores the count of that character
+           {
+               c++;
+               j++;
+           }
+           t+=to_string(c)+str[j]; // After finding the count it combines the count with that char and writes them together in a temporary string 
+           c=1;
+        }
+        str=t;
+        t.clear();
+        }
+        return str;
+    }
+    
+};
