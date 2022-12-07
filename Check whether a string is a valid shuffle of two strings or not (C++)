@@ -1,0 +1,40 @@
+bool Shufflecheck(string str1,string str2,string rs)
+{
+    if(str1.length()+str2.length()!=rs.length())
+    {
+        return false;
+    }
+    
+    sort(str1.begin(),str1.end());
+    sort(str2.begin(),str2.end());
+    sort(rs.begin(),rs.end());
+    
+    int i=0,k=0,j=0;
+    while(j<rs.length())
+    {
+        if(i<str1.length() && str1.at(i)==rs.at(k))
+        {
+            i++;
+        }
+        
+        else if(j<str2.length() && str2.at(j)==rs.at(k))
+        {
+            j++;
+        }
+        
+        else
+        {
+            return false();
+        }
+        
+        k++;
+    }
+    
+    if(i<str1.length() || j<str.length())
+    {
+        return false;
+    }
+    
+    return true;
+     
+}
