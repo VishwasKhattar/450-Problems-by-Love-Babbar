@@ -1,0 +1,11 @@
+ string SubSequence(int start,int end,string str,string curr="")
+    {
+        if(start==end)
+        return;
+        for(int i=start;i<end;i++)
+        {
+            curr+=str[i];
+            SubSequence(i,len,str,curr);
+            curr=curr.erase(curr.size()-1);
+        }
+    }
